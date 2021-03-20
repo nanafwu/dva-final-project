@@ -1,11 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 from time import sleep
 import csv
 
 
-class  MenuAPIUtils:
+class MenuAPIUtils:
 
     def make_soup(self, url):
         headers = {
@@ -17,7 +16,6 @@ class  MenuAPIUtils:
         soup = BeautifulSoup(page, "lxml")
         return soup
 
-    # Do not modify
     def __init__(self):
         self.menu_listing_page = 'https://www.allmenus.com/ny/new-york/-/'
         self.all_menu_url = 'https://www.allmenus.com/'
@@ -51,8 +49,6 @@ class  MenuAPIUtils:
             for line in tsvreader:
                 restaurant_url = line[1]
                 all_restaurant_urls.append(restaurant_url)
-
-        # all_restaurant_urls = ['/ny/new-york/386870-navy/menu/', '/ny/new-york/381300-north-river/menu/']
 
         with open(self.restaurnt_dish_list_tsv, 'a+') as file:
             writer = csv.writer(file, delimiter='\t')
