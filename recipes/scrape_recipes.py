@@ -11,7 +11,7 @@ class RecipeAPIUtils:
         self.all_dishes = self.get_unique_dishes()
         self.application_key = 'ea72b2a7589d887c4c93f02157fad0e6'
         self.application_id = '2f11e861'
-        self.recipe_data_dir = 'recipe_data/'
+        self.recipe_data_dir = 'recipe_search_data/'
 
     def create_dish_filename(self, dish_name)->str:
         """
@@ -24,7 +24,6 @@ class RecipeAPIUtils:
         Takes the dish name and runs through Edamen's search
         Example GET request: https://api.edamam.com/search?q=chicken&app_id=2f11e861&app_key=ea72b2a7589d887c4c93f02157fad0e6
         Documentation docs: https://developer.edamam.com/edamam-docs-recipe-api
-        :param query: recipe query
         """
 
         # replace non-alphanumeric characters with a space

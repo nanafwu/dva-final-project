@@ -1,0 +1,660 @@
+/usr/local/bin/python3.9 "/Volumes/GoogleDrive/My Drive/OMSA/CSE_6242_DVA/dva-final-project/recipes/scrape_recipes.py"
+Loading 35915 unique dishes
+Processing dish 0: ""?ampania" sandwich platter"
+Found 0 recipes for "ampania sandwich platter" dish
+Processing dish 1: ""assorted cured fish""
+Found 0 recipes for "assorted cured fish" dish
+Processing dish 2: ""awesome" caramel pretzel rod"
+Found 0 recipes for "awesome caramel pretzel rod" dish
+Processing dish 3: ""bacon benedict""
+Found 10 recipes for "bacon benedict" dish
+Processing dish 4: ""beef stroganoff""
+Found 10 recipes for "beef stroganoff" dish
+Processing dish 5: ""black cod""
+Found 10 recipes for "black cod" dish
+Processing dish 6: ""blinis with mushrooms""
+Found 3 recipes for "blinis with mushrooms" dish
+Processing dish 7: ""braised rabbit""
+Found 10 recipes for "braised rabbit" dish
+Processing dish 8: ""brama" vin de france&comma; chateau maris 2011"
+Found 0 recipes for "brama vin de france comma chateau maris 2011" dish
+Processing dish 9: ""buffalo" sweetbreads"
+Found 1 recipes for "buffalo sweetbreads" dish
+Processing dish 10: ""cb" slider"
+Found 0 recipes for "cb slider" dish
+Processing dish 11: ""chanterelle cream soup""
+Found 10 recipes for "chanterelle cream soup" dish
+Processing dish 12: ""cima genovese""
+Found 1 recipes for "cima genovese" dish
+Processing dish 13: ""crab and cheese khinkali""
+Found 0 recipes for "crab and cheese khinkali" dish
+Processing dish 14: ""cranberry artichoke scallops""
+Found 0 recipes for "cranberry artichoke scallops" dish
+Processing dish 15: ""czar's benedict""
+Found 0 recipes for "czar s benedict" dish
+Processing dish 16: ""deconstructed vinegret""
+Found 0 recipes for "deconstructed vinegret" dish
+Processing dish 17: ""duck pelmeni""
+Found 0 recipes for "duck pelmeni" dish
+Processing dish 18: ""esquites" street cart corn"
+Found 0 recipes for "esquites street cart corn" dish
+Processing dish 19: ""hail caesar" salad"
+Found 0 recipes for "hail caesar salad" dish
+Processing dish 20: ""harvest salad""
+Found 10 recipes for "harvest salad" dish
+Processing dish 21: ""heart smart" fries"
+Found 2 recipes for "heart smart fries" dish
+Processing dish 22: ""heart smart" onion rings"
+Found 0 recipes for "heart smart onion rings" dish
+Processing dish 23: ""homemade ice cream""
+Found 10 recipes for "homemade ice cream" dish
+Processing dish 24: ""horseradish prawns""
+Found 10 recipes for "horseradish prawns" dish
+Processing dish 25: ""insalata caprese" buffalo mozzarella, cherry tomatoes and organic basil"
+Found 0 recipes for "insalata caprese buffalo mozzarella cherry tomatoes and organic basil" dish
+Processing dish 26: ""insalata di pollo""
+Found 1 recipes for "insalata di pollo" dish
+Processing dish 27: ""insalata nizzarda" french beans, cherry tomatoes, potatoes, tuna, boiled eggs and gaeta olives"
+Found 0 recipes for "insalata nizzarda french beans cherry tomatoes potatoes tuna boiled eggs and gaeta olives" dish
+Processing dish 28: ""kartoshka""
+Found 5 recipes for "kartoshka" dish
+Processing dish 29: ""lobster salad""
+Found 10 recipes for "lobster salad" dish
+Processing dish 30: ""lobster stuffed cabbage""
+Found 3 recipes for "lobster stuffed cabbage" dish
+Processing dish 31: ""lollipops""
+Found 10 recipes for "lollipops" dish
+Processing dish 32: ""mac and cheese""
+Found 10 recipes for "mac and cheese" dish
+Processing dish 33: ""madras mail" railway chicken curry"
+Found 0 recipes for "madras mail railway chicken curry" dish
+Processing dish 34: ""meat charcuterie""
+Found 6 recipes for "meat charcuterie" dish
+Processing dish 35: ""medovik""
+Found 6 recipes for "medovik" dish
+Processing dish 36: ""minestra estiva di verdure""
+Found 0 recipes for "minestra estiva di verdure" dish
+Processing dish 37: ""mini" meatballs"
+Found 10 recipes for "mini meatballs" dish
+Processing dish 38: ""no carne" especial bowl"
+Found 1 recipes for "no carne especial bowl" dish
+Processing dish 39: ""pickled crudités""
+Found 0 recipes for "pickled crudit s" dish
+Processing dish 40: ""plt" pizza"
+Found 1 recipes for "plt pizza" dish
+Processing dish 41: ""potato julienne""
+Found 10 recipes for "potato julienne" dish
+Processing dish 42: ""quick coffee""
+Found 10 recipes for "quick coffee" dish
+Processing dish 43: ""ravioli del giorno," homemade ravioli of the day"
+Found 0 recipes for "ravioli del giorno homemade ravioli of the day" dish
+Processing dish 44: ""red 58" burger"
+Found 0 recipes for "red 58 burger" dish
+Processing dish 45: ""red 58" grilled marinated ribeye"
+Found 0 recipes for "red 58 grilled marinated ribeye" dish
+Processing dish 46: ""roasted vegetable salad""
+Found 10 recipes for "roasted vegetable salad" dish
+Processing dish 47: ""russian king crab from kamchatka""
+Found 0 recipes for "russian king crab from kamchatka" dish
+Processing dish 48: ""russian tea service""
+Found 0 recipes for "russian tea service" dish
+Processing dish 49: ""sage chicken""
+Found 10 recipes for "sage chicken" dish
+Processing dish 50: ""salmon benedict""
+Found 10 recipes for "salmon benedict" dish
+Processing dish 51: ""sardegna" sandwich platter"
+Found 0 recipes for "sardegna sandwich platter" dish
+Processing dish 52: ""seasonal green salad""
+Found 10 recipes for "seasonal green salad" dish
+Processing dish 53: ""seasonal sorbet""
+Found 10 recipes for "seasonal sorbet" dish
+Processing dish 54: ""short rib blinis""
+Found 0 recipes for "short rib blinis" dish
+Processing dish 55: ""sicilia" sandwich platter"
+Found 0 recipes for "sicilia sandwich platter" dish
+Processing dish 56: ""sirniki""
+Found 5 recipes for "sirniki" dish
+Processing dish 57: ""smetannik""
+Found 1 recipes for "smetannik" dish
+Processing dish 58: ""smoked salmon salad""
+Found 10 recipes for "smoked salmon salad" dish
+Processing dish 59: ""south village vareniki""
+Found 0 recipes for "south village vareniki" dish
+Processing dish 60: ""speakeasy" steak tartare"
+Found 0 recipes for "speakeasy steak tartare" dish
+Processing dish 61: ""sturgeon pelmeni""
+Found 0 recipes for "sturgeon pelmeni" dish
+Processing dish 62: ""sweet blinis""
+Found 10 recipes for "sweet blinis" dish
+Processing dish 63: ""twix" bars"
+Found 10 recipes for "twix bars" dish
+Processing dish 64: ""velvet borsch""
+Found 0 recipes for "velvet borsch" dish
+Processing dish 65: "#0. baked turkey"
+Found 5 recipes for "0 baked turkey" dish
+Processing dish 66: "#1. breaded chicken"
+Found 10 recipes for "1 breaded chicken" dish
+Processing dish 67: "#1. charbroiled burger deluxe"
+Found 0 recipes for "1 charbroiled burger deluxe" dish
+Processing dish 68: "#1. charbroiled chicken breast"
+Found 0 recipes for "1 charbroiled chicken breast" dish
+Processing dish 69: "#1. chicken cutlet parmigiana"
+Found 10 recipes for "1 chicken cutlet parmigiana" dish
+Processing dish 70: "#1. grilled chicken"
+Found 10 recipes for "1 grilled chicken" dish
+Processing dish 71: "#1. hot roast beef&comma; melted mozzarella&comma; sauteed onions & gravy"
+Found 0 recipes for "1 hot roast beef comma melted mozzarella comma sauteed onions gravy" dish
+Processing dish 72: "#1. italian chicken cutlet"
+Found 10 recipes for "1 italian chicken cutlet" dish
+Processing dish 73: "#1. italian special"
+Found 10 recipes for "1 italian special" dish
+Processing dish 74: "#1. melted american cheese"
+Found 10 recipes for "1 melted american cheese" dish
+Processing dish 75: "#10. lettuce classic"
+Found 10 recipes for "10 lettuce classic" dish
+Processing dish 76: "#10. roast beef"
+Found 10 recipes for "10 roast beef" dish
+Processing dish 77: "#11. corned beef&comma; kraut&comma; melted swiss cheese&comma; russian dressing on baked rye bread"
+Found 0 recipes for "11 corned beef comma kraut comma melted swiss cheese comma russian dressing on baked rye bread" dish
+Processing dish 78: "#12. chicken parmigiana"
+Found 10 recipes for "12 chicken parmigiana" dish
+Processing dish 79: "#13. honey turkey with avocado"
+Found 1 recipes for "13 honey turkey with avocado" dish
+Processing dish 80: "#14. melted parmigiana"
+Found 1 recipes for "14 melted parmigiana" dish
+Processing dish 81: "#15. the good fathers"
+Found 4 recipes for "15 the good fathers" dish
+Processing dish 82: "#16. the busky"
+Found 0 recipes for "16 the busky" dish
+Processing dish 83: "#17. american combo"
+Found 0 recipes for "17 american combo" dish
+Processing dish 84: "#2. charbroiled chicken breast"
+Found 0 recipes for "2 charbroiled chicken breast" dish
+Processing dish 85: "#2. cheeseburger deluxe"
+Found 10 recipes for "2 cheeseburger deluxe" dish
+Processing dish 86: "#2. chicken cutlet&comma; blt & russian dressing"
+Found 0 recipes for "2 chicken cutlet comma blt russian dressing" dish
+Processing dish 87: "#2. grilled chicken"
+Found 10 recipes for "2 grilled chicken" dish
+Processing dish 88: "#2. honey family"
+Found 10 recipes for "2 honey family" dish
+Processing dish 89: "#2. low calorie hero"
+Found 1 recipes for "2 low calorie hero" dish
+Processing dish 90: "#2. melted mozzarella cheese"
+Found 10 recipes for "2 melted mozzarella cheese" dish
+Processing dish 91: "#2. philly cheese steak"
+Found 10 recipes for "2 philly cheese steak" dish
+Processing dish 92: "#2. toasted monte cristo"
+Found 10 recipes for "2 toasted monte cristo" dish
+Processing dish 93: "#3. bacon cheeseburger deluxe"
+Found 1 recipes for "3 bacon cheeseburger deluxe" dish
+Processing dish 94: "#3. charbroiled chicken breast"
+Found 0 recipes for "3 charbroiled chicken breast" dish
+Processing dish 95: "#3. chicken cutlet"
+Found 10 recipes for "3 chicken cutlet" dish
+Processing dish 96: "#3. firenze"
+Found 2 recipes for "3 firenze" dish
+Processing dish 97: "#3. grilled chicken"
+Found 10 recipes for "3 grilled chicken" dish
+Processing dish 98: "#3. hot pastrami&comma; corned beef&comma; melted swiss & cole slaw"
+Found 0 recipes for "3 hot pastrami comma corned beef comma melted swiss cole slaw" dish
+Processing dish 99: "#3. melted cheddar cheese"
+Found 10 recipes for "3 melted cheddar cheese" dish
+Processing dish 100: "#3. smoked turkey"
+Found 10 recipes for "3 smoked turkey" dish
+Processing dish 101: "#3. turkey club"
+Found 10 recipes for "3 turkey club" dish
+Processing dish 102: "#4. charbroiled chicken breast"
+Found 0 recipes for "4 charbroiled chicken breast" dish
+Processing dish 103: "#4. chicken classic"
+Found 10 recipes for "4 chicken classic" dish
+Processing dish 104: "#4. chicken cutlet"
+Found 10 recipes for "4 chicken cutlet" dish
+Processing dish 105: "#4. chicken philly cheese steak"
+Found 10 recipes for "4 chicken philly cheese steak" dish
+Processing dish 106: "#4. fresh oven roasted turkey&comma; melted swiss&comma; cole slaw & russian dressing"
+Found 0 recipes for "4 fresh oven roasted turkey comma melted swiss comma cole slaw russian dressing" dish
+Processing dish 107: "#4. grilled chicken"
+Found 10 recipes for "4 grilled chicken" dish
+Processing dish 108: "#4. ham&comma; turkey&comma; swiss cheese&comma; sauteed onions & russian dressing"
+Found 0 recipes for "4 ham comma turkey comma swiss cheese comma sauteed onions russian dressing" dish
+Processing dish 109: "#4. siciliano"
+Found 8 recipes for "4 siciliano" dish
+Processing dish 110: "#4. turkey burger deluxe"
+Found 1 recipes for "4 turkey burger deluxe" dish
+Processing dish 111: "#5. chicken cutlet"
+Found 10 recipes for "5 chicken cutlet" dish
+Processing dish 112: "#5. chicken fajita"
+Found 10 recipes for "5 chicken fajita" dish
+Processing dish 113: "#5. cuban sandwich"
+Found 10 recipes for "5 cuban sandwich" dish
+Processing dish 114: "#5. fresh oven roasted turkey&comma; blt"
+Found 0 recipes for "5 fresh oven roasted turkey comma blt" dish
+Processing dish 115: "#5. grilled chicken"
+Found 10 recipes for "5 grilled chicken" dish
+Processing dish 116: "#5. turkey"
+Found 10 recipes for "5 turkey" dish
+Processing dish 117: "#5. veggie burger deluxe"
+Found 0 recipes for "5 veggie burger deluxe" dish
+Processing dish 118: "#6. cajun grilled chicken"
+Found 10 recipes for "6 cajun grilled chicken" dish
+Processing dish 119: "#6. cracked pepper turkey"
+Found 10 recipes for "6 cracked pepper turkey" dish
+Processing dish 120: "#6. grilled ham&comma; grilled turkey&comma; grilled tomato&comma; melted muenster cheese & mayo"
+Found 0 recipes for "6 grilled ham comma grilled turkey comma grilled tomato comma melted muenster cheese mayo" dish
+Processing dish 121: "#6. hot pastrami&comma; provolone cheese&comma; roasted peppers&comma; and mustard on hero"
+Found 0 recipes for "6 hot pastrami comma provolone cheese comma roasted peppers comma and mustard on hero" dish
+Processing dish 122: "#6. the italiano"
+Found 10 recipes for "6 the italiano" dish
+Processing dish 123: "#7. bbq grilled chicken"
+Found 9 recipes for "7 bbq grilled chicken" dish
+Processing dish 124: "#7. beef with gravy"
+Found 10 recipes for "7 beef with gravy" dish
+Processing dish 125: "#7. proscuitto"
+Found 6 recipes for "7 proscuitto" dish
+Processing dish 126: "#7. tuna melt"
+Found 10 recipes for "7 tuna melt" dish
+Processing dish 127: "#7. turkey burger"
+Found 10 recipes for "7 turkey burger" dish
+Processing dish 128: "#8. grilled chicken"
+Found 10 recipes for "8 grilled chicken" dish
+Processing dish 129: "#8. vegetarian"
+Found 10 recipes for "8 vegetarian" dish
+Processing dish 130: "#9. cordon bleu"
+Found 10 recipes for "9 cordon bleu" dish
+Processing dish 131: "#9. the chicken club panini"
+Found 0 recipes for "9 the chicken club panini" dish
+Processing dish 132: "#9. turkey&comma; bacon&comma; lettuce & tomato"
+Found 0 recipes for "9 turkey comma bacon comma lettuce tomato" dish
+Processing dish 133: "$&%*ing genius blueberry protein (bottled)"
+Found 0 recipes for "ing genius blueberry protein bottled" dish
+Processing dish 134: "$100 gift certificate"
+Found 0 recipes for "100 gift certificate" dish
+Processing dish 135: "$2 off all wines by the glass & lulu's classic cocktails"
+Found 0 recipes for "2 off all wines by the glass lulu s classic cocktails" dish
+Processing dish 136: "$25 gift certificate"
+Found 0 recipes for "25 gift certificate" dish
+Processing dish 137: "$50 gift certificate"
+Found 0 recipes for "50 gift certificate" dish
+Processing dish 138: "$75 gift certificate"
+Found 0 recipes for "75 gift certificate" dish
+Processing dish 139: "''muenster made'' turkey burger"
+Found 0 recipes for "muenster made turkey burger" dish
+Processing dish 140: "'21' burger"
+Found 10 recipes for "21 burger" dish
+Processing dish 141: "'21' martini"
+Found 10 recipes for "21 martini" dish
+Processing dish 142: "'21' perfect manhattan"
+Found 0 recipes for "21 perfect manhattan" dish
+Processing dish 143: "'nduja"
+Found 10 recipes for "nduja" dish
+Processing dish 144: "'nduja e burrata pizza"
+Found 0 recipes for "nduja e burrata pizza" dish
+Processing dish 145: "'slap ya mamma' buffalo wings"
+Found 0 recipes for "slap ya mamma buffalo wings" dish
+Processing dish 146: "(boar's head meat) black forest ham sandwich"
+Found 0 recipes for "boar s head meat black forest ham sandwich" dish
+Processing dish 147: "(boar's head meat) honey turkey sandwich"
+Found 0 recipes for "boar s head meat honey turkey sandwich" dish
+Processing dish 148: "(boar's head meat) italian sandwich"
+Found 0 recipes for "boar s head meat italian sandwich" dish
+Processing dish 149: "(boar's head meat) monte cristo sandwich"
+Found 0 recipes for "boar s head meat monte cristo sandwich" dish
+Processing dish 150: "(boar's head meat) philly cheese steak"
+Found 0 recipes for "boar s head meat philly cheese steak" dish
+Processing dish 151: "(boar's head meat) reuben sandwich"
+Found 0 recipes for "boar s head meat reuben sandwich" dish
+Processing dish 152: "(boar's head meat) tex mex sausalito turkey"
+Found 0 recipes for "boar s head meat tex mex sausalito turkey" dish
+Processing dish 153: "(boar's head meat) the american hero"
+Found 0 recipes for "boar s head meat the american hero" dish
+Processing dish 154: "(boar's head meat) the heart attack"
+Found 0 recipes for "boar s head meat the heart attack" dish
+Processing dish 155: "(boar's head meat) turkey and brie cheese"
+Found 0 recipes for "boar s head meat turkey and brie cheese" dish
+Processing dish 156: "(boar's head meat) turkey club"
+Found 0 recipes for "boar s head meat turkey club" dish
+Processing dish 157: "(boar's head meat) turkey orange wrap"
+Found 0 recipes for "boar s head meat turkey orange wrap" dish
+Processing dish 158: "(boar's head meat) turkey ranch sandwich"
+Found 0 recipes for "boar s head meat turkey ranch sandwich" dish
+Processing dish 159: "(boar's head meat) tuscan sandwich"
+Found 0 recipes for "boar s head meat tuscan sandwich" dish
+Processing dish 160: "*fried fish cake"
+Found 10 recipes for "fried fish cake" dish
+Processing dish 161: "*kombucha*"
+Found 10 recipes for "kombucha" dish
+Processing dish 162: "0% greek yogurt"
+Found 10 recipes for "0 greek yogurt" dish
+Processing dish 163: "00. accordion hero"
+Found 0 recipes for "00 accordion hero" dish
+Processing dish 164: "01. american cheese sandwich"
+Found 0 recipes for "01 american cheese sandwich" dish
+Processing dish 165: "01. american or swiss cheese"
+Found 0 recipes for "01 american or swiss cheese" dish
+Processing dish 166: "01. boiled ham sandwich"
+Found 0 recipes for "01 boiled ham sandwich" dish
+Processing dish 167: "01. challah french toasted"
+Found 0 recipes for "01 challah french toasted" dish
+Processing dish 168: "01. cheese omelet"
+Found 0 recipes for "01 cheese omelet" dish
+Processing dish 169: "01. cheese omelette"
+Found 0 recipes for "01 cheese omelette" dish
+Processing dish 170: "01. cheese pizza slice"
+Found 1 recipes for "01 cheese pizza slice" dish
+Processing dish 171: "01. coffee&comma; tea"
+Found 0 recipes for "01 coffee comma tea" dish
+Processing dish 172: "01. corned beef and pastrami combo sandwich"
+Found 0 recipes for "01 corned beef and pastrami combo sandwich" dish
+Processing dish 173: "01. cuban:"
+Found 0 recipes for "01 cuban" dish
+Processing dish 174: "01. danish&comma; cheese&comma; raisin cinnamon&comma; apple turnover"
+Found 0 recipes for "01 danish comma cheese comma raisin cinnamon comma apple turnover" dish
+Processing dish 175: "01. eggs&comma; feta cheese&comma; in a wrap"
+Found 0 recipes for "01 eggs comma feta cheese comma in a wrap" dish
+Processing dish 176: "01. grilled chicken"
+Found 5 recipes for "01 grilled chicken" dish
+Processing dish 177: "01. hamburger"
+Found 1 recipes for "01 hamburger" dish
+Processing dish 178: "01. italian sub"
+Found 0 recipes for "01 italian sub" dish
+Processing dish 179: "01. oven roasted turkey"
+Found 0 recipes for "01 oven roasted turkey" dish
+Processing dish 180: "01. philly cheese steak"
+Found 0 recipes for "01 philly cheese steak" dish
+Processing dish 181: "01. tuna fish"
+Found 0 recipes for "01 tuna fish" dish
+Processing dish 182: "01. two eggs on a roll"
+Found 0 recipes for "01 two eggs on a roll" dish
+Processing dish 183: "01. two eggs&comma; any style"
+Found 0 recipes for "01 two eggs comma any style" dish
+Processing dish 184: "02.  challah french toast with one choice of meat"
+Found 0 recipes for "02 challah french toast with one choice of meat" dish
+Processing dish 185: "02. breaded flounder fish filet"
+Found 0 recipes for "02 breaded flounder fish filet" dish
+Processing dish 186: "02. capicola ham sandwich"
+Found 0 recipes for "02 capicola ham sandwich" dish
+Processing dish 187: "02. cheese omelette"
+Found 1 recipes for "02 cheese omelette" dish
+Processing dish 188: "02. cheeseburger"
+Found 0 recipes for "02 cheeseburger" dish
+Processing dish 189: "02. croissant&comma; plain&comma; almond. chocolate"
+Found 0 recipes for "02 croissant comma plain comma almond chocolate" dish
+Processing dish 190: "02. decaffeinated"
+Found 0 recipes for "02 decaffeinated" dish
+Processing dish 191: "02. eggs"
+Found 10 recipes for "02 eggs" dish
+Processing dish 192: "02. eggs&comma; ham cheese in a wrap"
+Found 0 recipes for "02 eggs comma ham cheese in a wrap" dish
+Processing dish 193: "02. hot combo sub"
+Found 0 recipes for "02 hot combo sub" dish
+Processing dish 194: "02. muenster cheese sandwich"
+Found 0 recipes for "02 muenster cheese sandwich" dish
+Processing dish 195: "02. pepper turkey"
+Found 0 recipes for "02 pepper turkey" dish
+Processing dish 196: "02. pepperoni pizza slice"
+Found 0 recipes for "02 pepperoni pizza slice" dish
+Processing dish 197: "02. philly cheese steak"
+Found 0 recipes for "02 philly cheese steak" dish
+Processing dish 198: "02. prosciutto & mozzarella"
+Found 0 recipes for "02 prosciutto mozzarella" dish
+Processing dish 199: "02. provolone or muenster cheese"
+Found 0 recipes for "02 provolone or muenster cheese" dish
+Processing dish 200: "02. shrimp salad"
+Found 3 recipes for "02 shrimp salad" dish
+Processing dish 201: "02. turkey club combo sandwich"
+Found 0 recipes for "02 turkey club combo sandwich" dish
+Processing dish 202: "02. veggie omelet"
+Found 0 recipes for "02 veggie omelet" dish
+Processing dish 203: "02. western omelette"
+Found 0 recipes for "02 western omelette" dish
+Processing dish 204: "03. 2 eggs with cheese and meat"
+Found 0 recipes for "03 2 eggs with cheese and meat" dish
+Processing dish 205: "03. bacon and tomato omelette"
+Found 0 recipes for "03 bacon and tomato omelette" dish
+Processing dish 206: "03. bacon cheese burger"
+Found 0 recipes for "03 bacon cheese burger" dish
+Processing dish 207: "03. black forest ham sandwich"
+Found 0 recipes for "03 black forest ham sandwich" dish
+Processing dish 208: "03. california"
+Found 0 recipes for "03 california" dish
+Processing dish 209: "03. cheddar cheese sandwich"
+Found 0 recipes for "03 cheddar cheese sandwich" dish
+Processing dish 210: "03. cheddar or mozzarella cheese"
+Found 0 recipes for "03 cheddar or mozzarella cheese" dish
+Processing dish 211: "03. chicken parmigiana on a sub"
+Found 0 recipes for "03 chicken parmigiana on a sub" dish
+Processing dish 212: "03. croissant&comma; cream cheese"
+Found 0 recipes for "03 croissant comma cream cheese" dish
+Processing dish 213: "03. eggs&comma; american cheese & home fries"
+Found 0 recipes for "03 eggs comma american cheese home fries" dish
+Processing dish 214: "03. extra cheese pizza slice"
+Found 1 recipes for "03 extra cheese pizza slice" dish
+Processing dish 215: "03. hot chocolate"
+Found 1 recipes for "03 hot chocolate" dish
+Processing dish 216: "03. monte cristo"
+Found 0 recipes for "03 monte cristo" dish
+Processing dish 217: "03. pancakes with one choice of flavor"
+Found 0 recipes for "03 pancakes with one choice of flavor" dish
+Processing dish 218: "03. reuben combo sandwich"
+Found 0 recipes for "03 reuben combo sandwich" dish
+Processing dish 219: "03. sausalito turkey"
+Found 0 recipes for "03 sausalito turkey" dish
+Processing dish 220: "03. seafood salad"
+Found 0 recipes for "03 seafood salad" dish
+Processing dish 221: "03. spinach omelet"
+Found 0 recipes for "03 spinach omelet" dish
+Processing dish 222: "03. turkey triple decker"
+Found 0 recipes for "03 turkey triple decker" dish
+Processing dish 223: "03. two egg whites"
+Found 0 recipes for "03 two egg whites" dish
+Processing dish 224: "03. vegetarian omelette peppers&comma; onions&comma; tomatoes and cheese"
+Found 0 recipes for "03 vegetarian omelette peppers comma onions comma tomatoes and cheese" dish
+Processing dish 225: "04. 2 eggs on a roll"
+Found 0 recipes for "04 2 eggs on a roll" dish
+Processing dish 226: "04. american"
+Found 1 recipes for "04 american" dish
+Processing dish 227: "04. broccoli pizza slice"
+Found 0 recipes for "04 broccoli pizza slice" dish
+Processing dish 228: "04. california hero combo sandwich"
+Found 0 recipes for "04 california hero combo sandwich" dish
+Processing dish 229: "04. cappuccino"
+Found 0 recipes for "04 cappuccino" dish
+Processing dish 230: "04. chunky chicken salad"
+Found 0 recipes for "04 chunky chicken salad" dish
+Processing dish 231: "04. croissant ham & cheese"
+Found 0 recipes for "04 croissant ham cheese" dish
+Processing dish 232: "04. eggs&comma; ham&comma; cheddar cheese&comma; onions&comma;"
+Found 0 recipes for "04 eggs comma ham comma cheddar cheese comma onions comma" dish
+Processing dish 233: "04. feta cheese"
+Found 1 recipes for "04 feta cheese" dish
+Processing dish 234: "04. grilled chicken"
+Found 4 recipes for "04 grilled chicken" dish
+Processing dish 235: "04. honey turkey"
+Found 1 recipes for "04 honey turkey" dish
+Processing dish 236: "04. meatball parmigiana on a sub"
+Found 0 recipes for "04 meatball parmigiana on a sub" dish
+Processing dish 237: "04. mushroom omelet"
+Found 0 recipes for "04 mushroom omelet" dish
+Processing dish 238: "04. mushroom, onions and swiss cheese omelette"
+Found 0 recipes for "04 mushroom onions and swiss cheese omelette" dish
+Processing dish 239: "04. omelette feta cheese&comma; onions&comma; & tomato"
+Found 0 recipes for "04 omelette feta cheese comma onions comma tomato" dish
+Processing dish 240: "04. swiss cheese sandwich"
+Found 0 recipes for "04 swiss cheese sandwich" dish
+Processing dish 241: "04. turkey burger"
+Found 0 recipes for "04 turkey burger" dish
+Processing dish 242: "04. turkey club"
+Found 0 recipes for "04 turkey club" dish
+Processing dish 243: "04. turkey egg cheese"
+Found 0 recipes for "04 turkey egg cheese" dish
+Processing dish 244: "04. virginia ham sandwich"
+Found 0 recipes for "04 virginia ham sandwich" dish
+Processing dish 245: "05. 2 eggs and sausage"
+Found 2 recipes for "05 2 eggs and sausage" dish
+Processing dish 246: "05. bacon omelet"
+Found 0 recipes for "05 bacon omelet" dish
+Processing dish 247: "05. beef salami egg cheese"
+Found 0 recipes for "05 beef salami egg cheese" dish
+Processing dish 248: "05. black olive pizza slice"
+Found 0 recipes for "05 black olive pizza slice" dish
+Processing dish 249: "05. broccoli, onions and swiss cheese omelette"
+Found 0 recipes for "05 broccoli onions and swiss cheese omelette" dish
+Processing dish 250: "05. cuban"
+Found 0 recipes for "05 cuban" dish
+Processing dish 251: "05. egg salad"
+Found 2 recipes for "05 egg salad" dish
+Processing dish 252: "05. french vanilla"
+Found 0 recipes for "05 french vanilla" dish
+Processing dish 253: "05. jack cheese"
+Found 3 recipes for "05 jack cheese" dish
+Processing dish 254: "05. mozzarella cheese sandwich"
+Found 0 recipes for "05 mozzarella cheese sandwich" dish
+Processing dish 255: "05. muffin&comma; corn&comma; bran&comma; blueberry&comma; banana chocolate"
+Found 0 recipes for "05 muffin comma corn comma bran comma blueberry comma banana chocolate" dish
+Processing dish 256: "05. roseland supreme combo sandwich"
+Found 0 recipes for "05 roseland supreme combo sandwich" dish
+Processing dish 257: "05. smoked turkey"
+Found 0 recipes for "05 smoked turkey" dish
+Processing dish 258: "05. spiced ham sandwich"
+Found 0 recipes for "05 spiced ham sandwich" dish
+Processing dish 259: "05. tuna melt:"
+Found 1 recipes for "05 tuna melt" dish
+Processing dish 260: "05. vegetarian burger"
+Found 0 recipes for "05 vegetarian burger" dish
+Processing dish 261: "05. veggie"
+Found 6 recipes for "05 veggie" dish
+Processing dish 262: "06. 2 eggs with meat"
+Found 1 recipes for "06 2 eggs with meat" dish
+Processing dish 263: "06. bagel&comma; plain sesame&comma; cinnamon raisin&comma; poppy seed whole wheat or everything"
+Found 0 recipes for "06 bagel comma plain sesame comma cinnamon raisin comma poppy seed whole wheat or everything" dish
+Processing dish 264: "06. cobb"
+Found 0 recipes for "06 cobb" dish
+Processing dish 265: "06. combo:"
+Found 0 recipes for "06 combo" dish
+Processing dish 266: "06. eggs & cheese on croissant"
+Found 0 recipes for "06 eggs cheese on croissant" dish
+Processing dish 267: "06. greek omelette"
+Found 0 recipes for "06 greek omelette" dish
+Processing dish 268: "06. ice coffee&comma; tea"
+Found 0 recipes for "06 ice coffee comma tea" dish
+Processing dish 269: "06. italian sub combo sandwich"
+Found 0 recipes for "06 italian sub combo sandwich" dish
+Processing dish 270: "06. prosciutto mozzarella"
+Found 0 recipes for "06 prosciutto mozzarella" dish
+Processing dish 271: "06. provolone cheese sandwich"
+Found 0 recipes for "06 provolone cheese sandwich" dish
+Processing dish 272: "06. roast beef"
+Found 0 recipes for "06 roast beef" dish
+Processing dish 273: "06. sausage omelet"
+Found 0 recipes for "06 sausage omelet" dish
+Processing dish 274: "06. spinach pizza slice"
+Found 0 recipes for "06 spinach pizza slice" dish
+Processing dish 275: "06. turkey breast sandwich"
+Found 0 recipes for "06 turkey breast sandwich" dish
+Processing dish 276: "07. 2 eggs and beef salami and cheese"
+Found 0 recipes for "07 2 eggs and beef salami and cheese" dish
+Processing dish 277: "07. 3rd ave combo sandwich"
+Found 0 recipes for "07 3rd ave combo sandwich" dish
+Processing dish 278: "07. bbq chicken"
+Found 0 recipes for "07 bbq chicken" dish
+Processing dish 279: "07. corned beef omelette"
+Found 0 recipes for "07 corned beef omelette" dish
+Processing dish 280: "07. croissant"
+Found 0 recipes for "07 croissant" dish
+Processing dish 281: "07. grilled chicken&comma;"
+Found 0 recipes for "07 grilled chicken comma" dish
+Processing dish 282: "07. mushrooms pizza slice"
+Found 0 recipes for "07 mushrooms pizza slice" dish
+Processing dish 283: "07. pastrami"
+Found 0 recipes for "07 pastrami" dish
+Processing dish 284: "07. pastrami omelette"
+Found 0 recipes for "07 pastrami omelette" dish
+Processing dish 285: "07. salami omelette"
+Found 0 recipes for "07 salami omelette" dish
+Processing dish 286: "07. sausage omelette"
+Found 0 recipes for "07 sausage omelette" dish
+Processing dish 287: "07. smoke turkey mozzarella tomato"
+Found 0 recipes for "07 smoke turkey mozzarella tomato" dish
+Processing dish 288: "07. smoked turkey sandwich"
+Found 0 recipes for "07 smoked turkey sandwich" dish
+Processing dish 289: "07. turkey omelette"
+Found 0 recipes for "07 turkey omelette" dish
+Processing dish 290: "08. 2 eggs, turkey, bacon and cheese"
+Found 0 recipes for "08 2 eggs turkey bacon and cheese" dish
+Processing dish 291: "08. a&a chicken club:"
+Found 0 recipes for "08 a a chicken club" dish
+Processing dish 292: "08. eastern omelette"
+Found 0 recipes for "08 eastern omelette" dish
+Processing dish 293: "08. eggs cheese beef sausage"
+Found 0 recipes for "08 eggs cheese beef sausage" dish
+Processing dish 294: "08. halal"
+Found 0 recipes for "08 halal" dish
+Processing dish 295: "08. heavily fat combo sandwich"
+Found 0 recipes for "08 heavily fat combo sandwich" dish
+Processing dish 296: "08. pineapple pizza slice"
+Found 0 recipes for "08 pineapple pizza slice" dish
+Processing dish 297: "08. salsalito turkey sandwich"
+Found 0 recipes for "08 salsalito turkey sandwich" dish
+Processing dish 298: "08. special wrap"
+Found 0 recipes for "08 special wrap" dish
+Processing dish 299: "08. virginia ham"
+Found 0 recipes for "08 virginia ham" dish
+Processing dish 300: "08. western omelet"
+Found 0 recipes for "08 western omelet" dish
+Processing dish 301: "09. 2 eggs, beef, sausage and cheese"
+Found 0 recipes for "09 2 eggs beef sausage and cheese" dish
+Processing dish 302: "09. cuban combo sandwich"
+Found 0 recipes for "09 cuban combo sandwich" dish
+Processing dish 303: "09. eggs corned beef hash"
+Found 0 recipes for "09 eggs corned beef hash" dish
+Processing dish 304: "09. fresh pepper and onion pizza slice"
+Found 0 recipes for "09 fresh pepper and onion pizza slice" dish
+Processing dish 305: "09. ham"
+Found 1 recipes for "09 ham" dish
+Processing dish 306: "09. healthy omelette"
+Found 0 recipes for "09 healthy omelette" dish
+Processing dish 307: "09. ovengold turkey & swiss"
+Found 0 recipes for "09 ovengold turkey swiss" dish
+Processing dish 308: "09. prosciutto:"
+Found 0 recipes for "09 prosciutto" dish
+Processing dish 309: "09. protein omelet"
+Found 0 recipes for "09 protein omelet" dish
+Processing dish 310: "09. roast beef sandwich"
+Found 0 recipes for "09 roast beef sandwich" dish
+Processing dish 311: "09. the chicken parm"
+Found 0 recipes for "09 the chicken parm" dish
+Processing dish 312: "09. tuna onion&comma; tomato bacon&comma; or cheese"
+Found 0 recipes for "09 tuna onion comma tomato bacon comma or cheese" dish
+Processing dish 313: "1 (one)  beef burger slider"
+Found 7 recipes for "1 one beef burger slider" dish
+Processing dish 314: "1 - morning smoothie"
+Found 10 recipes for "1 morning smoothie" dish
+Processing dish 315: "1 - orange juice"
+Found 10 recipes for "1 orange juice" dish
+Processing dish 316: "1 app & 1 pasta or 2 small plates & 1 app"
+Found 0 recipes for "1 app 1 pasta or 2 small plates 1 app" dish
+Processing dish 317: "1 bomboloni"
+Found 10 recipes for "1 bomboloni" dish
+Processing dish 318: "1 crab cake"
+Found 10 recipes for "1 crab cake" dish
+Processing dish 319: "1 egg"
+Found 10 recipes for "1 egg" dish
+Processing dish 320: "1 egg any style"
+Found 10 recipes for "1 egg any style" dish
+Processing dish 321: "1 egg any style platter"
+Found 1 recipes for "1 egg any style platter" dish
+Processing dish 322: "1 egg any style sandwich"
+Found 10 recipes for "1 egg any style sandwich" dish
+Processing dish 323: "1 egg breakfast sandwich"
+Found 10 recipes for "1 egg breakfast sandwich" dish
+Processing dish 324: "1 egg on a bagel"
+Found 10 recipes for "1 egg on a bagel" dish
+Processing dish 325: "1 egg on a roll"
+Found 10 recipes for "1 egg on a roll" dish
+Processing dish 326: "1 egg on a roll with bacon"
+Found 10 recipes for "1 egg on a roll with bacon" dish
+Processing dish 327: "1 egg on a roll with corned beef"
+Found 10 recipes for "1 egg on a roll with corned beef" dish
+Processing dish 328: "1 egg on a roll with ham"
+Found 10 recipes for "1 egg on a roll with ham" dish
