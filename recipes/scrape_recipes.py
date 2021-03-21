@@ -9,6 +9,7 @@ class RecipeAPIUtils:
 
     def __init__(self):
         self.all_dishes = self.get_unique_dishes()
+        # TODO: It is recommended to generate your own Application key and ids when running locally
         self.application_key = 'ea72b2a7589d887c4c93f02157fad0e6'
         self.application_id = '2f11e861'
         self.recipe_data_dir = 'recipe_search_data/'
@@ -45,6 +46,9 @@ class RecipeAPIUtils:
         """
         for i, dish_name in enumerate(self.all_dishes):
             print('Processing dish {}: "{}"'.format(i, dish_name))
+            # TODO Swaraj - preprocess dish names here
+            # TODO additionally you may want to store 1 file per recipe
+            # TODO Keep track of which restaurants' dishes correspond to which recipes
             self.write_recipe(dish_name)
             sleep(6)
 
@@ -56,6 +60,7 @@ class RecipeAPIUtils:
         with open('../menu/menu_data/restaurant_dish_list.tsv', 'r') as f:
             tsvreader = csv.reader(f, delimiter='\t')
             for line in tsvreader:
+                # TODO Swaraj - Recommended to keep track of corresponding restaurant url
                 dish = line[1]
                 dishes.add(dish.lower())
 
@@ -65,4 +70,5 @@ class RecipeAPIUtils:
 
 if __name__ == '__main__':
     api = RecipeAPIUtils()
-    api.write_recipes_for_all_dishes()
+    # TODO: uncomment when ready
+    #api.write_recipes_for_all_dishes()
