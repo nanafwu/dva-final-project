@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<!-- add title -->
+    <title>Dish Search</title>
+    <!-- import required libraries here -->
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
+   	<style>
+		#nycmap {height: 400px;}
+		#similar_dishes_table_scroll {
+			height:100px;
+			overflow:auto;  
+		}
+		#similar_dishes_table_wrapper table {
+			width:100%;
+		}
+		#restaurants_table_scroll {
+			height:100px;
+			overflow:auto;  
+		}
+		#restaurants_table_wrapper table {
+			width:100%;
+		}	
+	</style>
+	
+ </head>
+
+<body>
+    <!-- Add heading for the visualization -->
+	
+	<!-- Create dropdown element here. Options should be added after reading in game file, they should not be created here.-->
+	<label>Select dish:
+		<input id='dish_input' list='dishes_list'>
+			<datalist id='dishes_list'>
+			</datalist>  
+	</label>
+	<div id="similar_dishes_table_wrapper">
+		<div id="similar_dishes_table_scroll">
+			<table>
+				<thead>
+					<tr>
+						<th><span class="text">Similar Dishes</span></th>
+					</tr>
+				</thead>        
+				<tbody id="similar_dishes_table">
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div id="restaurants_table_wrapper">
+		<div id="restaurants_table_scroll">
+			<table>
+				<thead>
+					<tr>
+						<th><span class="text">Restaurants</span></th>
+					</tr>
+				</thead>        
+				<tbody id="restaurants_table">
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div id="nycmap"></div>
+
+    <script>
+	
+		
+		var map_bounds = [
+			[40.50, -73.30], //SW
+			[40.90, -74.30]  //NE
+		];
+		
+		var {geo_json_restaurants, dishes} = get_toy_data();
+		
+        // enter code to append the dish options to the dropdown
+		$.each(dishes, (i, dish) =>	$("#dishes_list").append($("<option>").text(dish.name)));
+		
+		//initialize map
+		var nycmap = L.map('nycmap').setView([0, 0], 0);
+		nycmap.setMaxBounds(map_bounds);
+		nycmap.fitBounds(map_bounds);
+		attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution}).addTo(nycmap);
+		var circleStyle = {
+			radius: 4,
+			fillColor: 'orange',
+			color: 'black',
+			weight: 1,
+			opacity: 1,
+			fillOpacity: 1
+		};
+		
+		var geoJSON_layer = L.geoJSON( null, 
+									   {pointToLayer: (feature, latlng) => L.circleMarker(latlng, circleStyle),
+									    onEachFeature: (feature, layer) => layer.on('click', (e) => console.log(e.target.feature.properties.name))}).addTo(nycmap);
+
+		//geoJSON_layer.on('click', () => console.log('clicked'));
+
+		// helper functions
+		const set_similar_dishes_table = (dishes)=> $.each(dishes, (i, dish) =>	$("#similar_dishes_table").append("<tr><td>" + dish + "</td></tr>"));
+  		
+        function get_restaurants_with_dishes(dishes) {
+			var temp = [];
+			dishes.forEach(dish=>temp.push(...dish.restaurants));
+			return [...new Set(temp)];
+		}		
+		
+		const set_restaurants_table = (dishes) => $.each(get_restaurants_with_dishes(dishes), (i, restaurant) =>	$("#restaurants_table").append("<tr><td>" + restaurant + "</td></tr>"));
+	
+		// update lists based on drop-down changes		
+		$("#dish_input").bind('change', function () {
+		    var current_selection = this.value;
+			$("#dishes_list").find("option").each(function() {
+				if ($(this).val() == current_selection) {
+				    
+					// update similar dishes table
+				    $("tbody#similar_dishes_table tr").remove()
+					var selected_dish = dishes.find(dish=>dish.name===current_selection);
+					set_similar_dishes_table(selected_dish.similar);
+					
+					// update restaurants table
+				    $("tbody#restaurants_table tr").remove()
+					//for each similar dish  find the content get and append restaurants		
+					var similar_dishes = selected_dish.similar.map(similar_dish=>dishes.find(dish=>similar_dish===dish.name))
+					similar_dishes.push(selected_dish);
+					set_restaurants_table(similar_dishes);
+					
+					// update map
+					geoJSON_layer.clearLayers();
+					var list_of_restaurants = get_restaurants_with_dishes(similar_dishes);					
+					geoJSON_layer.addData(geo_json_restaurants.filter(restaurant=>list_of_restaurants.includes(restaurant.properties.name)));	
+				}
+			}) 
+		});
+		
+		function get_toy_data () {
+			var geo_json_restaurant1 = {"type":"Feature",
+								     "geometry":{"type":"Point","coordinates":[-74,40.7]},
+								     "properties":{"name":"r1"}
+								     };
+
+								  
+			var geo_json_restaurant2 = {"type":"Feature",
+								     "geometry":{"type":"Point","coordinates":[-74,40.75]},
+								     "properties":{"name":"r2"}
+								     };
+									 
+			var geo_json_restaurant3 = {"type":"Feature",
+								     "geometry":{"type":"Point","coordinates":[-74,40.8]},
+								     "properties":{"name":"r3"}
+								     };
+								  
+										  
+			var geo_json_restaurants = [geo_json_restaurant1, geo_json_restaurant2, geo_json_restaurant3];
+		
+			var dish1 = {name:'d1', similar:['d2','d3'], restaurants:['r1','r2','r3']};
+			var dish2 = {name:'d2', similar:['d1','d5'], restaurants:['r1','r2']};
+			var dish3 = {name:'d3', similar:['d1','d4'], restaurants:['r1','r3']};
+			var dish4 = {name:'d4', similar:['d1','d3'], restaurants:['r2','r3']};
+			var dish5 = {name:'d5', similar:['d2','d6'], restaurants:['r1']};
+			var dish6 = {name:'d6', similar:[], restaurants:[]};
+			var dishes = [dish1,dish2, dish3, dish4, dish5, dish6];
+			
+			return {geo_json_restaurants, dishes};
+		}
+				
+    </script>
+
+</body>
+
+</html>
