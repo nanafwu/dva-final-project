@@ -50,3 +50,11 @@ Nana's suggestions for the next steps are below:
 - **Clean up dish names**: See notes above. Add an additional preprocessing step to the `write_recipes_for_all_dishes()` function in `scrape_recipes.py`. Then run the preprocessed dish names through the `write_recipe(dish_name)` function.
 - Make sure as we are re-running the recipe search, we also append to a text file where each row contains `restaurant_url`, `original_dish_name`, `matched_recipe`. This will make it easier to go between restaurant dish names -> recipes.
     - We could store the recipe results in a new `recipe` directory, with 1 recipe per file. 
+
+# 4. [Ilkay] Service and visualization
+
+Snapshot of preliminary visualization with toy data is shown below. Typing/selection in dish drop-down is propogated to similar dishes and restaurants lists and the restaurants are marked on the map.
+
+![index](images/index.jpg)
+
+TODO: better styling, click events in the lists and map, integration with real data.
