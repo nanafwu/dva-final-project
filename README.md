@@ -55,6 +55,6 @@ Nana's suggestions for the next steps are below:
 
 Snapshot of preliminary visualization with toy data is shown below. Typing/selection in dish drop-down is propogated to similar dishes and restaurants lists and the restaurants are marked on the map.
 
-![index](images/index.jpg)
+![index](images/index.JPG)
 
 TODO: better styling, click events in the lists and map, integration with real data.
