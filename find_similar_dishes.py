@@ -93,6 +93,7 @@ class SimilarDishFinder(object):
         :rtype: list of strings
         """
         recipes = pd.read_csv(filepath, index_col=0)
+        recipes = recipes.groupby(['Restaurant_URL', 'Dish_Name'], as_index=False).first()
 
         if max_rows:
             np.random.seed(47)
@@ -186,6 +187,17 @@ class SimilarDishFinder(object):
         # get indices of the top 5 most similar dishes (excluding the dish itself)
         top_5 = top_6[:,1:]
         top_5_names = dish_names[top_5]
+
+        #calculate how similar the top 5 dishes are (1-10 score)
+        #sort each row in descending order, exclude the recipe itself, and take the top 5 highest similarity scores
+        top_scores = np.sort(similarities)[:,-1:-2-num_matches:-1][:,1:]
+        #flatten array
+        flat = top_scores.flatten()
+        #divide into 10 quantiles and assign labels, reshape into original form, add one to create 1-10 scale
+        sim_scores = pd.qcut(flat, q=10, labels=False).reshape(top_scores.shape)+1
+
+        #add similarity scores, similar dish indices, and similar dish names as columns in dataframe
+        self.recipe_df['Similarity_Scores'] = sim_scores.tolist() #add 1-10 similarity score
         self.recipe_df[f'Top_{num_matches}_Indices'] = top_5.tolist() #add top dish indices
         self.recipe_df[f'Top_{num_matches}_Dish_Names'] = top_5_names.tolist() #add top dish names
 
@@ -248,4 +260,4 @@ if __name__ == "__main__":
     finder.read_menu_data('Recipes_A.csv')
     finder.find_closest_matches(test_algos=True)
     cos_avg, kmeans_avg = finder.compare_algorithms()
-    finder.write_to_csv('Similar_Recipes_man_sub.csv')
+    finder.write_to_csv('Similar_Recipes_Grouped.csv')
