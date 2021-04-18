@@ -53,6 +53,9 @@ Nana's suggestions for the next steps are below:
 
 # 4. [Ilkay] Service and visualization
 
+Visualization can be launched by running a python server from viz folder (python -m http.server 8888) and typing http://localhost:8888/viz/index.html in the browser.
+Visualization will depend on 2 other files viz/d3_data.csv and viz/restaurant_location/updated_restaurant_list.tsv.
+
 Snapshot of preliminary visualization with toy data is shown below. Typing/selection in dish drop-down is propogated to similar dishes and restaurants lists and the restaurants are marked on the map.
 
 ![index](images/index.JPG)
