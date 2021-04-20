@@ -23,10 +23,12 @@ class SimilarDishFinder(object):
         :type use_health_labels: boolean, default False
         """
         self.recipe_df = None
+        self.restaurant_df = None
         self.method = method
         self.use_health_labels = use_health_labels
         self.cos_sim_list = []
         self.kmeans_list = []
+        pd.options.mode.chained_assignment = None  # default='warn'
 
         if self.method not in ['tfidf', 'manual']:
             raise ValueError("method must be \'tfidf\' or \'manual\'")
@@ -83,24 +85,34 @@ class SimilarDishFinder(object):
 
         return inglist
 
-    def read_menu_data(self, filepath, max_rows=None):
+    def read_menu_data(self, filepaths, max_rows=None):
         """
         read in menu data from csv
 
-        :param filepath: filepath for menu data
-        :type filepath: str
+        :param filepath: list of filepaths for menu data
+        :type filepath: list of str
+        :param max_rows: number of rows to randomly sample if reducing size of data to test
+        :type max_rows: int
         :return: Pandas dataframe with cleaned recipe data
-        :rtype: list of strings
+        :rtype: dataframe
         """
-        recipes = pd.read_csv(filepath, index_col=0)
+        recipes = pd.DataFrame()
+        for file in filepaths:
+            sub_df = pd.read_csv(file, index_col=0)
+            recipes = recipes.append(sub_df, ignore_index=True)
+
+        #remove non-alphanumeirc characters from dish name
+        recipes['Dish_Name'] = recipes['Dish_Name'].apply(lambda x: re.sub(r'[^a-zA-Z\s]*', '', x)) #clean dish names
+        recipes = recipes.groupby(['Restaurant_URL', 'Dish_Name'], as_index=False).first()
+        recipes.reset_index(inplace=True)
+        recipes.rename(columns={'index':'restaurant_idxs'}, inplace=True)
 
         if max_rows:
             np.random.seed(47)
             randrows = np.random.choice(recipes.shape[0],max_rows,replace=False)
             recipes = recipes.iloc[randrows,:]
 
-        recipes.reset_index(inplace=True)
-        recipes.drop(columns='index', inplace=True)
+        #recipes.drop(columns='index', inplace=True)
         recipes['Health_Label'] = recipes['Health_Label'].apply(lambda x: ast.literal_eval(x))
         recipes['Recipe'] = recipes['Recipe'].apply(lambda x: ast.literal_eval(x))
 
@@ -112,7 +124,14 @@ class SimilarDishFinder(object):
         else:
             recipes['Ingredients'] = recipes['Recipe'].apply(lambda x: self.clean_ingredients(x))
 
+        self.restaurant_df = recipes[['Restaurant_URL', 'Dish_Name']]
+        self.restaurant_df.sort_index(inplace=True)
+
+        recipes = recipes.groupby('Dish_Name', as_index=False)[['restaurant_idxs','Restaurant_URL','Ingredients']].agg(list)
+        recipes['Ingredients'] = recipes['Ingredients'].apply(lambda x: ' '.join([i for i in x]) if len(x)>1 else x[0])
+
         self.recipe_df = recipes
+
         return recipes
 
     def create_ingredient_vectors(self, recipe_df):
@@ -178,6 +197,7 @@ class SimilarDishFinder(object):
 
         # get indices of the top 5 most similar dishes (including the dish itself)
         top_6 = np.argsort(similarities)[:,-1:-2-num_matches:-1]
+
         #add mean cosine similarities for dishes within top 6 to list if we are testing algos
         if test_algos:
             for row in top_6:
@@ -186,7 +206,28 @@ class SimilarDishFinder(object):
         # get indices of the top 5 most similar dishes (excluding the dish itself)
         top_5 = top_6[:,1:]
         top_5_names = dish_names[top_5]
-        self.recipe_df[f'Top_{num_matches}_Indices'] = top_5.tolist() #add top dish indices
+
+        #calculate how similar the top 5 dishes are (1-10 score)
+        #sort each row in descending order, exclude the recipe itself, and take the top 5 highest similarity scores
+        top_scores = np.sort(similarities)[:,-1:-2-num_matches:-1][:,1:]
+
+        #flatten array
+        flat = top_scores.flatten()
+        #divide into 10 quantiles and assign labels, reshape into original form, add one to create 1-10 scale
+        sim_scores = pd.qcut(flat, q=10, labels=False).reshape(top_scores.shape)+1
+
+        #add similarity scores, similar dish indices, and similar dish names as columns in dataframe
+        self.recipe_df['Similarity_Scores'] = sim_scores.tolist() #add 1-10 similarity score
+
+        #create lists of recipe indexes (from restaurant_df) and restaurant URLs to reference for visualization
+        rest_idxs = []
+        rest_URLs = []
+        for i in top_5:
+            rest_idxs.append(self.recipe_df['restaurant_idxs'][i].values.tolist())
+            rest_URLs.append(self.recipe_df['Restaurant_URL'][i].values.tolist())
+
+        self.recipe_df[f'Top_{num_matches}_Indices'] = rest_idxs #add top dish indices
+        self.recipe_df[f'Top_{num_matches}_URLs'] = rest_URLs #add restaurant URLs
         self.recipe_df[f'Top_{num_matches}_Dish_Names'] = top_5_names.tolist() #add top dish names
 
         #use SVD to reduce dimensions of data
@@ -213,11 +254,13 @@ class SimilarDishFinder(object):
         self.recipe_df['Dishes_in_Cluster'] = cluster_indices
         self.recipe_df['Cluster_Dish_Names'] = cluster_names
 
-        return self.recipe_df
+        self.recipe_df=self.recipe_df[['Dish_Name', 'restaurant_idxs', 'Top_5_Indices',\
+                                       'Top_5_URLs', 'Top_5_Dish_Names', 'Similarity_Scores']]
+        return self.recipe_df, self.restaurant_df
 
     def compare_algorithms(self, verbose = True):
         '''
-        compares average of the average cosine similarities for the dishes recommended for each recipe
+        compares average of the average cosine similarities between the recommended dishes for each recipe
 
         :param: verbose - if True, prints out a comparison between the cosine similarity and kmeans algorithms
         :type: bool, default True
@@ -234,18 +277,18 @@ class SimilarDishFinder(object):
 
         return cos_avg, kmeans_avg
 
-    def write_to_csv(self, filepath):
+    def write_to_csv(self, recipe_path = 'recipes_df.csv', restaurant_path = 'restaurant_df.csv'):
         """
         write updated dataframe to csv
 
         :param filepath: path of file to be written
         :type filepath: str
         """
-        self.recipe_df.to_csv(path_or_buf=filepath)
+        self.recipe_df.to_csv(path_or_buf=recipe_path)
+        self.restaurant_df.to_csv(path_or_buf=restaurant_path)
 
 if __name__ == "__main__":
-    finder = SimilarDishFinder(use_health_labels=True)
-    finder.read_menu_data('Recipes_A.csv')
-    finder.find_closest_matches(test_algos=True)
-    cos_avg, kmeans_avg = finder.compare_algorithms()
-    finder.write_to_csv('Similar_Recipes_man_sub.csv')
+    finder = SimilarDishFinder(use_health_labels=False)
+    finder.read_menu_data(['Recipes_A.csv', 'Recipes_B.csv', 'Recipes_C.csv'])
+    recipe_df, restaurant_df = finder.find_closest_matches(test_algos=True)
+    finder.write_to_csv()
