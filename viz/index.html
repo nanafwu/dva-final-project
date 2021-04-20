@@ -7,8 +7,14 @@
 	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
-   	<style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+<style>
 		#nycmap {height: 400px;}
 		#similar_dishes_table_scroll {
 			height:200px;
@@ -16,6 +22,8 @@
 		}
 		#similar_dishes_table_wrapper table {
 			width:100%;
+			margin-top:10px;
+			padding-left:10px;
 		}
 		#restaurants_table_scroll {
 			height:200px;
@@ -23,6 +31,19 @@
 		}
 		#restaurants_table_wrapper table {
 			width:100%;
+			margin-top:10px;
+			padding-left:10px;
+		}	
+		.well {
+			background: none;
+		}
+		#dish_input {
+			margin-top:10px;
+			padding-left:10px;
+		}	
+		#search_label {
+			margin-top:10px;
+			padding-left:10px;
 		}	
 	</style>
 	
@@ -32,17 +53,18 @@
     <!-- Add heading for the visualization -->
 	
 	<!-- Create dropdown element here. Options should be added after reading in game file, they should not be created here.-->
-	<label>Select dish:
+	<label id='search_label'><strong>Select/type dish:</strong>
 		<input id='dish_input' list='dishes_list'>
 			<datalist id='dishes_list'>
 			</datalist>  
 	</label>
-	<div id="similar_dishes_table_wrapper">
+	<div class="well" id="similar_dishes_table_wrapper">
 		<div id="similar_dishes_table_scroll">
-			<table>
-				<thead>
+			<table class="table">
+				<thead class="thead-light">
 					<tr>
 						<th align="left"><span class="text">Similar Dishes</span></th>
+						<th align="left"><span class="text">Similarity Score</span></th>
 					</tr>
 				</thead>        
 				<tbody id="similar_dishes_table">
@@ -50,12 +72,14 @@
 			</table>
 		</div>
 	</div>
-	<div id="restaurants_table_wrapper">
+	<div class="well" id="restaurants_table_wrapper">
 		<div id="restaurants_table_scroll">
-			<table>
-				<thead>
+			<table class="table">
+				<thead class="thead-light">
 					<tr>
 						<th align="left"><span class="text">Restaurants</span></th>
+						<th align="left"><span class="text">Dishes Served</span></th>
+						<th align="left"><span class="text">Average Similarity Score</span></th>
 					</tr>
 				</thead>        
 				<tbody id="restaurants_table">
@@ -130,7 +154,12 @@
 			nycmap.fitBounds(map_bounds);
 			attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution}).addTo(nycmap);
-			const circleStyle = (fcolor)=>({'radius': 6, 'fillColor': fcolor, 'color': 'black', 'weight': 1, 'opacity': 1, 'fillOpacity': 1});
+			const circleStyle = (fcolor)=>({'radius': 6, 
+											'fillColor': fcolor, 
+											'color': 'black', 
+											'weight': 1, 
+											'opacity': 1, 
+											'fillOpacity': 1});
 		
 			var list_of_restaurants = [];
 			var geoJSON_layer = L.geoJSON( null, 
@@ -140,7 +169,7 @@
 			//geoJSON_layer.on('click', () => console.log('clicked'));
 
 			// helper functions
-			const set_similar_dishes_table = (dishes)=> $.each(dishes, (i, dish) =>	$("#similar_dishes_table").append("<tr><td>" + dish.dish_name +"("+ dish.similarity_score +")"+ "</td></tr>"));
+			const set_similar_dishes_table = (dishes)=> $.each(dishes, (i, dish) =>	$("#similar_dishes_table").append("<tr><td>" + dish.dish_name + "</td><td>"+  dish.similarity_score+"</td></tr>"));
   		
 			function get_restaurants_with_dishes(dishes) {
 				var temp = [];
@@ -164,9 +193,9 @@
 			const get_restaurant_name = (restaurant) => restaurant.info.restaurant;
 			const get_avg_score = (restaurant) => restaurant.info.avg_score;
 			const get_similar_dishes = (restaurant) => restaurant.dishes.join();
-			const get_restaurant_display_info = (restaurant) => get_restaurant_name(restaurant) + wrap_with_paranthesis(get_avg_score(restaurant)) + wrap_with_paranthesis(get_similar_dishes(restaurant))
+			const get_restaurant_display_info = (restaurant) => "<tr><td>"+get_restaurant_name(restaurant)  + "</td><td>"+get_similar_dishes(restaurant)+"</td><td>"+get_avg_score(restaurant)+"</td></tr>";
 			const get_restaurant_tooltip = (restaurant) => get_restaurant_name(restaurant) + wrap_with_paranthesis(get_avg_score(restaurant)) + '<br>Dishes:' +(get_similar_dishes(restaurant))
-			const set_restaurants_table = (dishes) => $.each(get_restaurants_with_dishes(dishes), (i, restaurant) =>	$("#restaurants_table").append("<tr><td>" + get_restaurant_display_info(restaurant) + "</td></tr>"));
+			const set_restaurants_table = (dishes) => $.each(get_restaurants_with_dishes(dishes), (i, restaurant) =>	$("#restaurants_table").append(get_restaurant_display_info(restaurant)));
 	
 			// update lists based on drop-down changes		
 			$("#dish_input").bind('change', function () {
@@ -193,6 +222,9 @@
 					}
 				}) 
 			});
+			
+			$("tbody#similar_dishes_table").on('click','tr',function() {  $(this).addClass('table-active').siblings().removeClass('table-active');});
+			$("tbody#restaurants_table").on('click','tr',function() {    $(this).addClass('table-active').siblings().removeClass('table-active');});
 		}			
     </script>
 
