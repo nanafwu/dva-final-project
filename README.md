@@ -44,12 +44,12 @@ To get more ideas of how we could clean up dish names, refer to the log file in 
 
 # 3. [Swaraj Patankar] Match dishes from menu data to recipes
 
-Nana's suggestions for the next steps are below:
 
-- Sign up for your own account on Edaman and get your own application key and application id so we are not rate limited by just 1 account. Just remember to modify these values in `scrape_recipes.py` `__init__`. 
+
+- Sign up for an account on Edaman and get your own application key and application id so we are not rate limited by just 1 account. Just remember to modify these values in `scrape_recipes.py` `__init__`. 
 - **Clean up dish names**: See notes above. Add an additional preprocessing step to the `write_recipes_for_all_dishes()` function in `scrape_recipes.py`. Then run the preprocessed dish names through the `write_recipe(dish_name)` function.
-- Make sure as we are re-running the recipe search, we also append to a text file where each row contains `restaurant_url`, `original_dish_name`, `matched_recipe`. This will make it easier to go between restaurant dish names -> recipes.
-    - We could store the recipe results in a new `recipe` directory, with 1 recipe per file. 
+- Append to a text file where each row contains `restaurant_url`, `original_dish_name`, `matched_recipe`. This will make it easier to go between restaurant dish names -> recipes.
+-- Store all recipes in a Pandas DataFrame then convert it to a CSV
 
 # 4. [David Howell and Nicholas Davis] Creating Ingredient Vectors
 
