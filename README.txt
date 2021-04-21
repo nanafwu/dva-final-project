@@ -12,7 +12,8 @@
     Using the ingredients and nutritional data, the package determines 
     similar restaurant dishes. For instance, a mocha frappe cappucino may
     map to almond milk latte, mocha chocolate coffee, etc.. from a variety
-    of restaurants. (Maybe David can add information about the algorithm).
+    of restaurants. The dish similarities are determined using cosine 
+    similarity.
     
     The similar dish data is formatted to csv files and eventually
     visualized using d3.
