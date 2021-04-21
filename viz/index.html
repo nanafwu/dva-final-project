@@ -17,7 +17,7 @@
 <style>
 		#nycmap {height: 400px;}
 		#similar_dishes_table_scroll {
-			height:200px;
+			height:250px;
 			overflow:auto;  
 		}
 		#similar_dishes_table_wrapper table {
@@ -26,7 +26,7 @@
 			padding-left:10px;
 		}
 		#restaurants_table_scroll {
-			height:200px;
+			height:250px;
 			overflow:auto;  
 		}
 		#restaurants_table_wrapper table {
@@ -60,7 +60,7 @@
 	</label>
 	<div class="well" id="similar_dishes_table_wrapper">
 		<div id="similar_dishes_table_scroll">
-			<table class="table">
+			<table class="table table-sm">
 				<thead class="thead-light">
 					<tr>
 						<th align="left"><span class="text">Similar Dishes</span></th>
@@ -74,11 +74,11 @@
 	</div>
 	<div class="well" id="restaurants_table_wrapper">
 		<div id="restaurants_table_scroll">
-			<table class="table">
+			<table class="table table-sm">
 				<thead class="thead-light">
 					<tr>
 						<th align="left"><span class="text">Restaurants</span></th>
-						<th align="left"><span class="text">Dishes Served</span></th>
+						<th align="left"><span class="text">Similar Dishes Served</span></th>
 						<th align="left"><span class="text">Average Similarity Score</span></th>
 					</tr>
 				</thead>        
@@ -126,7 +126,39 @@
 			console.log('----hi----');
 			ready(values[0], values[1]);
         });
-		
+		var highlighted_restaurants = []
+		var similar_dishes = []
+		var geoJSON_layer = {}
+		function get_dish_from_name (dishes, dish_name) {return dishes.find(d=>d.name===dish_name);}
+
+		function get_restaurants_with_dishes(dishes) {
+				var temp = [];
+				var dishes_info = []; 
+				dishes.forEach(dish=>temp.push(...dish.dish.restaurants));
+				dishes.forEach(dish=>dishes_info.push(...(dish.dish.restaurants.map(restaurant=>({'dish':dish.dish.name,'restaurant':restaurant,'similarity':dish.similarity_score})))))
+				//console.log(dishes_info)
+				var unique_restaurants = [...new Set(temp)];
+				var sim_dish_count_4_ur = unique_restaurants.map(restaurant=>({'restaurant':restaurant,'cnt':dishes_info.filter(info=>restaurant===info.restaurant).length}))
+				var sim_dish_total_score_4_ur = unique_restaurants.map(restaurant=>({'restaurant':restaurant,'total_score':(dishes_info.filter(info=>restaurant===info.restaurant)).reduce(function(accumulated, current_val) { return accumulated + current_val.similarity; }, 0)}))
+				var sim_dish_avg_score_4_ur = unique_restaurants.map(restaurant=>({'restaurant':restaurant,'avg_score':((sim_dish_total_score_4_ur.find(r=>restaurant===r.restaurant).total_score)/(sim_dish_count_4_ur.find(r=>restaurant===r.restaurant).cnt)).toFixed(3)}))
+				var temp = sim_dish_avg_score_4_ur.map(restaurant=>({'info':restaurant, 'dishes':dishes.filter(dish=>dish.dish.restaurants.includes(restaurant.restaurant)).map(dish=>dish.dish.name)}))
+				var result = temp.sort((a,b)=>+b.info.avg_score-+a.info.avg_score)
+				//console.log(sim_dish_count_4_ur)
+				//console.log(sim_dish_total_score_4_ur)
+				//console.log(sim_dish_avg_score_4_ur)
+				//console.log(result)
+				return result
+		}
+		const get_restaurant_name = (restaurant) => restaurant.info.restaurant;
+		function get_restaurant_emphasis (highlight_list, current_restaurant) {
+		   var found = highlight_list.find(r=>get_restaurant_name(r)===current_restaurant);
+			if (highlight_list.length ==0 || found == undefined){ 
+				return 1;
+			}
+			var result =  found==undefined ? 1:3;
+			return result;
+		}
+			
 		function ready(dishes, restaurants) {
 		
 			var quantile = d3.scaleQuantile().domain([0,10]).range(['#fee5d9','#fcae91','#fb6a4a','#cb181d'])
@@ -154,47 +186,29 @@
 			nycmap.fitBounds(map_bounds);
 			attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution}).addTo(nycmap);
-			const circleStyle = (fcolor)=>({'radius': 6, 
+			const circleStyle = (fcolor, highlight)=>({'radius': 6, 
 											'fillColor': fcolor, 
 											'color': 'black', 
-											'weight': 1, 
+											'weight': highlight, 
 											'opacity': 1, 
 											'fillOpacity': 1});
 		
 			var list_of_restaurants = [];
-			var geoJSON_layer = L.geoJSON( null, 
-											{pointToLayer: (feature, latlng) => L.circleMarker(latlng, circleStyle(quantile(get_avg_score(list_of_restaurants.find(r=>get_restaurant_name(r)===feature.properties.name))))).bindTooltip(get_restaurant_tooltip(list_of_restaurants.find(r=>get_restaurant_name(r)===feature.properties.name))).openTooltip(),
+
+			geoJSON_layer = L.geoJSON( null, 
+											{pointToLayer: (feature, latlng) => L.circleMarker(latlng, circleStyle(quantile(get_avg_score(list_of_restaurants.find(r=>get_restaurant_name(r)===feature.properties.name))),
+																							    		           get_restaurant_emphasis(highlighted_restaurants, feature.properties.name)			                )).bindTooltip(get_restaurant_tooltip(list_of_restaurants.find(r=>get_restaurant_name(r)===feature.properties.name))).openTooltip(),
 											onEachFeature: (feature, layer) => layer.on('click', (e) => console.log(e.target.feature.properties.name))}).addTo(nycmap);
 
 			//geoJSON_layer.on('click', () => console.log('clicked'));
 
 			// helper functions
-			const set_similar_dishes_table = (dishes)=> $.each(dishes, (i, dish) =>	$("#similar_dishes_table").append("<tr><td>" + dish.dish_name + "</td><td>"+  dish.similarity_score+"</td></tr>"));
-  		
-			function get_restaurants_with_dishes(dishes) {
-				var temp = [];
-				var dishes_info = []; 
-				dishes.forEach(dish=>temp.push(...dish.dish.restaurants));
-				dishes.forEach(dish=>dishes_info.push(...(dish.dish.restaurants.map(restaurant=>({'dish':dish.dish.name,'restaurant':restaurant,'similarity':dish.similarity_score})))))
-				//console.log(dishes_info)
-				var unique_restaurants = [...new Set(temp)];
-				var sim_dish_count_4_ur = unique_restaurants.map(restaurant=>({'restaurant':restaurant,'cnt':dishes_info.filter(info=>restaurant===info.restaurant).length}))
-				var sim_dish_total_score_4_ur = unique_restaurants.map(restaurant=>({'restaurant':restaurant,'total_score':(dishes_info.filter(info=>restaurant===info.restaurant)).reduce(function(accumulated, current_val) { return accumulated + current_val.similarity; }, 0)}))
-				var sim_dish_avg_score_4_ur = unique_restaurants.map(restaurant=>({'restaurant':restaurant,'avg_score':((sim_dish_total_score_4_ur.find(r=>restaurant===r.restaurant).total_score)/(sim_dish_count_4_ur.find(r=>restaurant===r.restaurant).cnt)).toFixed(3)}))
-				var result = sim_dish_avg_score_4_ur.map(restaurant=>({'info':restaurant, 'dishes':dishes.filter(dish=>dish.dish.restaurants.includes(restaurant.restaurant)).map(dish=>dish.dish.name)}))
-				//console.log(sim_dish_count_4_ur)
-				//console.log(sim_dish_total_score_4_ur)
-				//console.log(sim_dish_avg_score_4_ur)
-				//console.log(result)
-				return result
-			}
-			
+			const set_similar_dishes_table = (dishes)=> $.each(dishes, (i, dish) =>	$("#similar_dishes_table").append("<tr><td>" + dish.dish_name + "</td><td>"+  dish.similarity_score+"</td></tr>"));	
 			const wrap_with_paranthesis = (str) => "("+str+")";
-			const get_restaurant_name = (restaurant) => restaurant.info.restaurant;
 			const get_avg_score = (restaurant) => restaurant.info.avg_score;
 			const get_similar_dishes = (restaurant) => restaurant.dishes.join();
 			const get_restaurant_display_info = (restaurant) => "<tr><td>"+get_restaurant_name(restaurant)  + "</td><td>"+get_similar_dishes(restaurant)+"</td><td>"+get_avg_score(restaurant)+"</td></tr>";
-			const get_restaurant_tooltip = (restaurant) => get_restaurant_name(restaurant) + wrap_with_paranthesis(get_avg_score(restaurant)) + '<br>Dishes:' +(get_similar_dishes(restaurant))
+			const get_restaurant_tooltip = (restaurant) => get_restaurant_name(restaurant)  + '<br>Similar Dishes Served:' +(get_similar_dishes(restaurant))+ '<br>Average Similarity Score:'+get_avg_score(restaurant);
 			const set_restaurants_table = (dishes) => $.each(get_restaurants_with_dishes(dishes), (i, restaurant) =>	$("#restaurants_table").append(get_restaurant_display_info(restaurant)));
 	
 			// update lists based on drop-down changes		
@@ -206,13 +220,15 @@
 						// update similar dishes table
 						$("tbody#similar_dishes_table tr").remove()
 						var selected_dish = dishes.find(dish=>dish.name===current_selection);
-						set_similar_dishes_table(selected_dish.similar);
+						var all_dishes = selected_dish.similar;
+						all_dishes.push({'dish_name': current_selection, 'similarity_score': 10});
+						set_similar_dishes_table(all_dishes.sort((a,b)=>+b.similarity_score-+a.similarity_score))
 					
 						// update restaurants table
 						$("tbody#restaurants_table tr").remove()
 						//for each similar dish  find the content get and append restaurants		
-						var similar_dishes = selected_dish.similar.map(similar_dish=>({'dish':dishes.find(dish=>similar_dish.dish_name===dish.name),'similarity_score':similar_dish.similarity_score}))
-						similar_dishes.push({'dish':selected_dish, 'similarity_score':10});
+						similar_dishes = selected_dish.similar.map(similar_dish=>({'dish':dishes.find(dish=>similar_dish.dish_name===dish.name),'similarity_score':similar_dish.similarity_score}))
+						//similar_dishes.push({'dish':selected_dish, 'similarity_score':10});//adding dish to the similar dishes table instead
 						set_restaurants_table(similar_dishes);
 					
 						// update map
@@ -223,8 +239,23 @@
 				}) 
 			});
 			
-			$("tbody#similar_dishes_table").on('click','tr',function() {  $(this).addClass('table-active').siblings().removeClass('table-active');});
-			$("tbody#restaurants_table").on('click','tr',function() {    $(this).addClass('table-active').siblings().removeClass('table-active');});
+			$("tbody#similar_dishes_table").on('click','tr',function() {
+				highlighted_restaurants = get_restaurants_with_dishes([{'dish':get_dish_from_name(dishes, $(this)[0].children[0].innerText), 'similarity_score':10}]);
+				$("tbody#restaurants_table tr:nth-child(n)").removeClass('table-active')
+				highlighted_restaurants.forEach(d =>$(`tbody#restaurants_table td:contains(${d.info.restaurant})`).parent().addClass('table-active'))
+
+				$(this).addClass('table-active').siblings().removeClass('table-active');
+
+				// update map
+				geoJSON_layer.clearLayers();
+				list_of_restaurants = get_restaurants_with_dishes(similar_dishes);					
+				geoJSON_layer.addData(geo_json_restaurants.filter(restaurant=>list_of_restaurants.some(element => element.info.restaurant === restaurant.properties.name)&&restaurant.properties.is_location_valid=='true'));	
+				
+			});
+				
+			
+            //disabling restaurant clicks for now - dish click seems sufficient
+			//$("tbody#restaurants_table").on('click','tr',function() {    $(this).addClass('table-active').siblings().removeClass('table-active');});
 		}			
     </script>
 
