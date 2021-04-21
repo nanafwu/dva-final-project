@@ -22,7 +22,7 @@
     1. python scrape_menu_dishes.py
     2. Create developer account at [Edamam Recipe Search API](https://developer.edamam.com/edamam-recipe-api)
     3. Modify application key and application ID in scrape_recipes.py __init__ function.
-    4. python scrape_recipes.py to generate Recipe_A.csv, Recipe_B.csv, and Recipe_C.csv
+    4. python scrape_recipes.py to generate CSV's with Recipe Data.
     5. python find_grouped_dishes.py to generate a restaurant dishes and its similar results.
     6. python display_dishes.py to generate file to be used in d3 visualization
 
