@@ -102,7 +102,7 @@ class SimilarDishFinder(object):
             recipes = recipes.append(sub_df, ignore_index=True)
 
         #remove non-alphanumeirc characters from dish name
-        recipes['Dish_Name'] = recipes['Dish_Name'].apply(lambda x: re.sub(r'[^a-zA-Z\s]*', '', x)) #clean dish names
+        recipes['Dish_Name'] = recipes['Dish_Name'].apply(lambda x: re.sub(r'[^a-zA-Z\s]*', '', x.strip())) #clean dish names
         recipes = recipes.groupby(['Restaurant_URL', 'Dish_Name'], as_index=False).first()
         recipes.reset_index(inplace=True)
         recipes.rename(columns={'index':'restaurant_idxs'}, inplace=True)
@@ -185,9 +185,9 @@ class SimilarDishFinder(object):
         :return: sparse array of ingredients (each row represents the ingredient vector for a dish)
         :rtype: Scipy sparse CSR matrix
         """
-        # if number of clusters is not passed default to num_recipes/num_matches
+        # if number of clusters is not passed, default to num_recipes/num_matches+1
         if not num_clusters:
-            num_clusters = int(self.recipe_df.shape[0]/(num_matches))
+            num_clusters = int(self.recipe_df.shape[0]/(num_matches+1))
 
         dish_names = self.recipe_df['Dish_Name'].to_numpy()
 
@@ -254,11 +254,12 @@ class SimilarDishFinder(object):
         self.recipe_df['Dishes_in_Cluster'] = cluster_indices
         self.recipe_df['Cluster_Dish_Names'] = cluster_names
 
-        self.recipe_df=self.recipe_df[['Dish_Name', 'restaurant_idxs', 'Top_5_Indices',\
-                                       'Top_5_URLs', 'Top_5_Dish_Names', 'Similarity_Scores']]
+        #self.recipe_df=self.recipe_df[['Dish_Name', 'restaurant_idxs', 'Top_5_Indices',\
+                                       #'Top_5_URLs', 'Top_5_Dish_Names', 'Similarity_Scores']]
+
         return self.recipe_df, self.restaurant_df
 
-    def compare_algorithms(self, verbose = True):
+    def compare_algorithms(self, verbose=True):
         '''
         compares average of the average cosine similarities between the recommended dishes for each recipe
 
@@ -270,7 +271,8 @@ class SimilarDishFinder(object):
         cos_avg = np.mean(self.cos_sim_list)
         kmeans_avg = np.mean(self.kmeans_list)
         if verbose:
-            print('The average cosine similarity for the cosine similarity algorithm is '\
+            print('Algorithm Selection Experiment Results: \n'+\
+                  'The average cosine similarity for the cosine similarity algorithm is '\
                   +f'{cos_avg:.2f}'+'\n'\
                   +'The average cosine similarity for the kmeans algorithm is '\
                   +f'{kmeans_avg:.2f}')
@@ -279,16 +281,19 @@ class SimilarDishFinder(object):
 
     def write_to_csv(self, recipe_path = 'recipes_df.csv', restaurant_path = 'restaurant_df.csv'):
         """
-        write updated dataframe to csv
+        write updated dataframes to csv
 
-        :param filepath: path of file to be written
-        :type filepath: str
+        :param recipe_path: path of file to be written for recipes_df
+        :type recipe_path: str
+        :param restaurant_path: path of file to be written for restaurant_df
+        :type restaurant_path: str
         """
         self.recipe_df.to_csv(path_or_buf=recipe_path)
         self.restaurant_df.to_csv(path_or_buf=restaurant_path)
 
 if __name__ == "__main__":
-    finder = SimilarDishFinder(use_health_labels=False)
+    finder = SimilarDishFinder(use_health_labels=True)
     finder.read_menu_data(['Recipes_A.csv', 'Recipes_B.csv', 'Recipes_C.csv'])
     recipe_df, restaurant_df = finder.find_closest_matches(test_algos=True)
+    finder.compare_algorithms()
     finder.write_to_csv()
