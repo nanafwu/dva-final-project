@@ -51,7 +51,35 @@ Nana's suggestions for the next steps are below:
 - Make sure as we are re-running the recipe search, we also append to a text file where each row contains `restaurant_url`, `original_dish_name`, `matched_recipe`. This will make it easier to go between restaurant dish names -> recipes.
     - We could store the recipe results in a new `recipe` directory, with 1 recipe per file. 
 
-# 4. [Ilkay] Service and visualization
+# 4. [David Howell and Nicholas Davis] Creating Ingredient Vectors
+
+We took the matched restaurant dish and recipe data and converted it into vector representations of ingredients that can be used to calculate recipe similarity. The code for ingredient vector creation can be found in `find_similar_dishes.py`
+- For each list of ingredients (recipe), we cleaned the individual ingredient strings, stemmed each word, and then concatenated the cleaned ingredients into one long ingredient string. This was achieved through the function `clean_ingredients()`
+- We then converted these ingredient strings into vector representations by using TF-IDF in the function `create_ingredient_vectors()`
+- The vector representations form a sparse matrix of shape **number of ingredients X number of unique ingredients across all recipes**
+
+# 5. [David Howell] Finding Most Similar Dishes
+
+We took the sparse ingredient matrix and found the most similar dishes to each recipe by using two methods: cosine similarity and kmeans clustering. We then compared the results of the two methods to determine which recommended the most similar dishes. The code can be found in `find_similar_dishes.py`
+
+After comparison, we found that the cosine similarity algorithm produced better recommendations. This code can be found in the `compare_algorithms()` function.
+
+The final output to be used for the visualization is a pair of csv files:
+
+The list of restaurants and the dishes they serve is `restaurants_df.csv`. Each row consists of:
+- The URL of the restaurant
+- The dish name
+
+The list dishes and their similar recommended dishes is `recipes_df.csv`. Each row consists of:
+- The dish name
+- The indexes in `restaurants_df.csv` that feature the dish
+- The names of the Top 5 recommended dishes
+- The indexes in `restaurants_df.csv` that feature the top 5 recommended dishes
+- The similarity scores for each of the recommended dishes on a 1-10 scale
+
+For visualization, the indexes of the recommended dishes from `recipes_df.csv` are mapped back to the restaurants in `restaurants_df.csv` to locate them on a map.
+
+# 6. [Ilkay] Service and visualization
 
 Visualization can be launched by running a python server from viz folder (python -m http.server 8888) and typing http://localhost:8888/index.html in the browser.
 Visualization will depend on 2 other files viz/d3_data.csv and viz/restaurant_location/updated_restaurant_list.tsv.
