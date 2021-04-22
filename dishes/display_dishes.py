@@ -27,9 +27,9 @@ class UserInput(object):
     # df.iloc[:,np.r_[0:2,4:5]]
     return
 
-  def read_restaurant_tsv(self, filepath):
+  def read_restaurant_tsv(self, filepath='../menu/menu_data/restaurant_list.tsv', restaurant_df_file='./restaurant_df.csv'):
     self.restaurants_df = pd.read_table(filepath)
-    self.restaurants_match_df = pd.read_csv('./restaurant_df.csv', index_col=False)
+    self.restaurants_match_df = pd.read_csv(restaurant_df_file, index_col=False)
     # print(self.restaurants_df)
     # print(self.restaurants_df.columns.values) # file header
 
@@ -120,7 +120,7 @@ class UserInput(object):
     df.to_csv('d3_data.csv', index=False, columns=headers)
 
 
-  def generate_csv_for_d3_num2(self):
+  def generate_csv_for_d3_num2(self, ofn='d3_data.csv'):
     data = []
     for row in self.recipe_df.itertuples():
       # flatten = [val for sublist in row.Top_5_Indices[1:-1].split(',') for val in sublist]
@@ -190,7 +190,7 @@ class UserInput(object):
     # print(df)
     headers = ['Index', 'Dish_Name', 'Restaurant_Name', 'Similar_Dishes', 'Similar_Indexes', 'Similar_Scores']
     df.columns = headers
-    df.to_csv('d3_data.csv', index=False, columns=headers)
+    df.to_csv(ofn, index=False, columns=headers)
       
     '''
     DISH_ID, DISH_NAME, REST_NAME SIM_DISH_ID1,...,SIM_DISH_ID5, SIM_DISH_NAME_1,...,SIM_DISH_NAME5,REST_NAME1,...,REST_NAME5
@@ -200,7 +200,7 @@ class UserInput(object):
 if __name__ == "__main__":
   ui = UserInput()
   ui.read_recipes_csv('recipes_df.csv')
-  ui.read_restaurant_tsv('./menu/menu_data/restaurant_list.tsv')
+  ui.read_restaurant_tsv()
   ui.generate_csv_for_d3_num2()
   # while(True):
   #   try:
