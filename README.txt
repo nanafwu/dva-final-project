@@ -32,11 +32,12 @@
     A more detailed walkthrough of the code is located README.md.
 
     INSTALLATION - How to install and setup your code
-    1. `python scrape_menu_dishes.py`
+    0. Navigate to top level directory of code.
+    1. `python menu/scrape_menu_dishes.py`
     2. Create developer account at [Edamam Recipe Search API](https://developer.edamam.com/edamam-recipe-api)
     3. Modify application key and application ID in scrape_recipes.py __init__ function.
-    4. `python scrape_recipes.py` to generate CSV's with Recipe Data.
-    5. `python find_similar_dishes.py` to generate a restaurant dishes and its similar results.
+    4. `python recipes/scrape_recipes.py` to generate CSV's with Recipe Data.
+    5. `python dishes/find_similar_dishes.py` to generate a restaurant dishes and its similar results.
     6. `python display_dishes.py` to generate file to be used in d3 visualization
 
     EXECUTION - How to run a demo on your code

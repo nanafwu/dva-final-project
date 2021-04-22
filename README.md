@@ -53,14 +53,14 @@ To get more ideas of how we could clean up dish names, refer to the log file in 
 
 # 4. [David Howell and Nicholas Davis] Creating Ingredient Vectors
 
-We took the matched restaurant dish and recipe data and converted it into vector representations of ingredients that can be used to calculate recipe similarity. The code for ingredient vector creation can be found in `find_similar_dishes.py`
+We took the matched restaurant dish and recipe data and converted it into vector representations of ingredients that can be used to calculate recipe similarity. The code for ingredient vector creation can be found in `dishes/find_similar_dishes.py`
 - For each list of ingredients (recipe), we cleaned the individual ingredient strings, stemmed each word, and then concatenated the cleaned ingredients into one long ingredient string. This was achieved through the function `clean_ingredients()`
 - We then converted these ingredient strings into vector representations by using TF-IDF in the function `create_ingredient_vectors()`
 - The vector representations form a sparse matrix of shape **number of ingredients X number of unique ingredients across all recipes**
 
 # 5. [David Howell] Finding Most Similar Dishes
 
-We took the sparse ingredient matrix and found the most similar dishes to each recipe by using two methods: cosine similarity and kmeans clustering. We then compared the results of the two methods to determine which recommended the most similar dishes. The code can be found in `find_similar_dishes.py`
+We took the sparse ingredient matrix and found the most similar dishes to each recipe by using two methods: cosine similarity and kmeans clustering. We then compared the results of the two methods to determine which recommended the most similar dishes. The code can be found in `dishes/find_similar_dishes.py`
 
 After comparison, we found that the cosine similarity algorithm produced better recommendations. This code can be found in the `compare_algorithms()` function.
 
