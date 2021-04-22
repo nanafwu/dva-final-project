@@ -1,4 +1,3 @@
-    DESCRIPTION - Describe the package in a few paragraphs
     This package scrapes the menus of the top 500 most popular restaurants 
     in NYC according to https://www.allmenus.com/ny/new-york/-/ to generate
     a list of restaurant dishes.
@@ -16,7 +15,13 @@
     similarity.
     
     The similar dish data is formatted to csv files and eventually
-    visualized using d3.
+    visualized in an interactive html page as a list and a map. When a user
+    searches and selects a dish, similar dishes and the restaurants that carry 
+    the similar dishes are shown in the map. The restaurants are color coded 
+    to show the average similarity score of the similar dishes they serve. 
+    Clicking on a similar dish highlights the restaurants carrying it in the 
+    list and the map. The technologies used in visualization are Bootstrap, 
+    D3, Leaflet, OpenStreetMap and jQuery. 
     
     A more detailed walkthrough of the code is located README.md.
 
