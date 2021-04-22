@@ -1,3 +1,4 @@
+    DESCRIPTION - Describe the package in a few paragraphs
     This package scrapes the menus of the top 500 most popular restaurants 
     in NYC according to https://www.allmenus.com/ny/new-york/-/ to generate
     a list of restaurant dishes.
@@ -8,20 +9,19 @@
     a 1:1 ratio between recipes and restaurant dishes with supporting
     information including nutritional data and ingredients.
 
-    Using the ingredients and nutritional data, the package determines 
-    similar restaurant dishes. For instance, a mocha frappe cappucino may
-    map to almond milk latte, mocha chocolate coffee, etc.. from a variety
-    of restaurants. The dish similarities are determined using cosine 
-    similarity.
+    We took the matched restaurant dish and recipe data and converted it into 
+    vector representations of ingredients that can be used to calculate 
+    recipe similarity. We then took the sparse ingredient matrix and found the 
+    most similar dishes to each recipe by using two methods: 
+    cosine similarity and kmeans clustering. We then compared the results 
+    of the two methods to determine which recommended the most similar dishes. 
+    For instance, a mocha frappe cappucino may map to almond milk latte, 
+    mocha chocolate coffee, etc from a variety of restaurants. The code for 
+    ingredient vector creation and finding the most similar dishes can be found in 
+    find_similar_dishes.py.
     
     The similar dish data is formatted to csv files and eventually
-    visualized in an interactive html page as a list and a map. When a user
-    searches and selects a dish, similar dishes and the restaurants that carry 
-    the similar dishes are shown in the map. The restaurants are color coded 
-    to show the average similarity score of the similar dishes they serve. 
-    Clicking on a similar dish highlights the restaurants carrying it in the 
-    list and the map. The technologies used in visualization are Bootstrap, 
-    D3, Leaflet, OpenStreetMap and jQuery. 
+    visualized using d3.
     
     A more detailed walkthrough of the code is located README.md.
 
