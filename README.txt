@@ -17,6 +17,8 @@
     
     The similar dish data is formatted to csv files and eventually
     visualized using d3.
+    
+    A more detailed walkthrough of the code is located README.md.
 
     INSTALLATION - How to install and setup your code
     1. `python scrape_menu_dishes.py`
