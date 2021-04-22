@@ -178,6 +178,7 @@
 			];
 		
 			// enter code to append the dish options to the dropdown
+			dishes.sort((a,b)=> { return a.name>b.name ? 1 : -1; } )
 			$.each(dishes, (i, dish) =>	$("#dishes_list").append($("<option>").text(dish.name)));
 		
 			//initialize map
@@ -222,12 +223,13 @@
 						var selected_dish = dishes.find(dish=>dish.name===current_selection);
 						var all_dishes = selected_dish.similar;
 						all_dishes.push({'dish_name': current_selection, 'similarity_score': 10});
+						all_dishes = [...new Set(all_dishes.map((d) => JSON.stringify(d))),].map(str => JSON.parse(str) );//first convert objects to string, after uniquify through set convert back to object
 						set_similar_dishes_table(all_dishes.sort((a,b)=>+b.similarity_score-+a.similarity_score))
 					
 						// update restaurants table
 						$("tbody#restaurants_table tr").remove()
 						//for each similar dish  find the content get and append restaurants		
-						similar_dishes = selected_dish.similar.map(similar_dish=>({'dish':dishes.find(dish=>similar_dish.dish_name===dish.name),'similarity_score':similar_dish.similarity_score}))
+						similar_dishes = all_dishes.map(similar_dish=>({'dish':dishes.find(dish=>similar_dish.dish_name===dish.name),'similarity_score':similar_dish.similarity_score}))
 						//similar_dishes.push({'dish':selected_dish, 'similarity_score':10});//adding dish to the similar dishes table instead
 						set_restaurants_table(similar_dishes);
 					
@@ -239,6 +241,7 @@
 				}) 
 			});
 			
+			// click event for similar dishes table --> also highlights restaurants in the list and map
 			$("tbody#similar_dishes_table").on('click','tr',function() {
 				highlighted_restaurants = get_restaurants_with_dishes([{'dish':get_dish_from_name(dishes, $(this)[0].children[0].innerText), 'similarity_score':10}]);
 				$("tbody#restaurants_table tr:nth-child(n)").removeClass('table-active')
