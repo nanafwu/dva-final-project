@@ -47,3 +47,6 @@
     Run a python server (`python -m http.server 8888`)
     Navigate to http://localhost:8888/ in chrome browser.
     Type in dishes to see local restaurants in New York and similar food items.
+
+    DEMO URL:
+    https://youtu.be/E5GhCa9vTIA
