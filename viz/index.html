@@ -142,6 +142,7 @@
 		var similar_dishes = []
 		var geoJSON_layer = {}
 		var geo_json_restaurants = []
+		
 		function get_dish_from_name (dishes, dish_name) {return dishes.find(d=>d.name===dish_name);}
 
 		function get_restaurants_with_dishes(dishes) {
@@ -220,13 +221,12 @@
 			legend.onAdd = function (map) {
 				var div = L.DomUtil.create('div', 'info legend');
 				var grades = [0].concat(quantile.quantiles());
-				var labels = [];
-
+				
+				div.innerHTML = '<strong> Average Similarity Score </strong><br>'
 				for (var i = 0; i < grades.length; i++) {
 					div.innerHTML += '<i style="background:' + quantile(grades[i]+1) + '"></i> ' +
 									grades[i] + (grades[i+1] ? '&ndash;' + grades[i+1] + '<br>' : '+');
 				}
-
 				return div;
 			};
 
